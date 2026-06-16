@@ -32,7 +32,7 @@ git clone https://github.com/ChoeHa-U/Better-BLUR-for-MySHELL
 move into the project directory:
 
 ```bash
-cd ~/Downloads/Better-BLUR-for-MySHELL-main
+cd ~/Downloads/Better-BLUR-for-MySHELL
 ```
 
 Run the script:
