@@ -2,6 +2,10 @@
 
 A small interactive script that sets up a clean, consistent blur(Static) look across GNOME using the [Blur My Shell](https://github.com/aunetx/blur-my-shell) extension - and fixes a known bug where the blur radius randomly resets after your screen locks or your computer sleeps.
 
+![BETTER BLUR](frame1.jpg)
+
+![Before and After](difference.jpg)
+
 ## What it does
 
 - Checks that you're on GNOME (works on Ubuntu, Fedora, Bazzite, and other distros with GNOME).
