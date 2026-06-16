@@ -235,13 +235,16 @@ case "$choice" in
         echo ""
         ;;
     4)
-        echo -e "  Bye!"
+        echo -e "  Exiting with no changes being made."
         echo ""
         exit 0
         ;;
     *)
-        echo -e "  ${RED}Invalid choice. Exiting.${RESET}"
+        echo -e "  ${RED}Invalid choice (Should be either 1, 2, 3, 4). Exiting...${RESET}"
         echo ""
         exit 1
         ;;
 esac
+
+echo -e " HEY! :)  Check me on Twitter/X: ${BOLD}@choehau_ara${RESET}"
+echo ""
