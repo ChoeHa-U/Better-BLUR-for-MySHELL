@@ -1,6 +1,6 @@
 # Better Blur Tuner
 
-A small interactive script that sets up a clean, consistent blur look across GNOME using the [Blur My Shell](https://github.com/aunetx/blur-my-shell) extension - and fixes a known bug where the blur radius randomly resets after your screen locks or your laptop sleeps.
+A small interactive script that sets up a clean, consistent blur(Static) look across GNOME using the [Blur My Shell](https://github.com/aunetx/blur-my-shell) extension - and fixes a known bug where the blur radius randomly resets after your screen locks or your laptop sleeps.
 
 ## What it does
 
@@ -116,3 +116,4 @@ Blur My Shell has a bug where the blur radius can silently snap back to a lower 
 - If you're on a non-GNOME desktop (KDE, XFCE, etc.), the script will tell you it isn't supported and won't run.
 - If your desktop environment isn't detected correctly even though you are on GNOME, the script will ask if you want to continue anyway.
 - pop-up blur is not implemented yet (do it manually).
+- Dynamic blur need to be configured manually for dock if you are discomfort with the static blur on pop-up autohide dock config.
