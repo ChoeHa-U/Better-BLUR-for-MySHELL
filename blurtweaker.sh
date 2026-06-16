@@ -19,6 +19,7 @@ RESET='\033[0m'
 echo ""
 echo -e "${CYAN}${BOLD}  Better Blur Tuner${RESET}"
 echo -e "  Makes blur on top bar, dock, overview, folders - more comfortable to read and consistent."
+echo -e "  (Only for static blur, if you need dynamic on dock set it up manually for now, better if you use dash/dock auto hide)"
 echo ""
 
 # ─── Check GNOME ──────────────────────────────────────────────────────────────
@@ -118,9 +119,11 @@ SERVICE_EOF
 
 # ─── Apply BETTER BLUR preset ─────────────────────────────────────────────────
 apply_better_blur() {
-    dconf load "$DCONF_PATH" << 'EOF'
+    local corner_radius="$1"
+
+    dconf load "$DCONF_PATH" << EOF
 [/]
-pipelines={'pipeline_default': {'name': <'UNIVERSAL'>, 'effects': <[<{'type': <'luminosity'>, 'id': <'effect_10123004872538'>, 'params': <{'brightness_shift': <0>, 'brightness_multiplicator': <1>, 'contrast': <0.69999999999999996>, 'contrast_center': <0.45000000000000001>, 'saturation_multiplicator': <1.1000000000000001>}>}>, <{'type': <'native_static_gaussian_blur'>, 'id': <'effect_70781716204571'>, 'params': <{'radius': <100>, 'brightness': <0.69999999999999996>, 'unscaled_radius': <100>}>}>, <{'type': <'color'>, 'id': <'effect_91905123905706'>, 'params': <{'color': <(1.0, 1.0, 1.0, 0.035472974181175232)>}>}>]>}, 'pipeline_57656187583797': {'name': <'APPLICATION,UNFOCUSED - (Modify this yourself User)'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_38795972003219'>, 'params': <{'radius': <100>, 'brightness': <0.59999999999999998>, 'unscaled_radius': <100>}>}>, <{'type': <'luminosity'>, 'id': <'effect_51653740722811'>, 'params': <{'brightness_shift': <0>, 'brightness_multiplicator': <1>, 'contrast': <0.69999999999999996>, 'contrast_center': <0.5>, 'saturation_multiplicator': <1.2>}>}>, <{'type': <'corner'>, 'id': <'effect_70682751325723'>, 'params': <{'radius': <24>}>}>]>}, 'pipeline_43430336888672': {'name': <'ROUNDED-DOCK'>, 'effects': <[<{'type': <'luminosity'>, 'id': <'effect_10123004872538'>, 'params': <{'brightness_shift': <0>, 'brightness_multiplicator': <1>, 'contrast': <0.69999999999999996>, 'contrast_center': <0.45000000000000001>, 'saturation_multiplicator': <1.1000000000000001>}>}>, <{'type': <'native_static_gaussian_blur'>, 'id': <'effect_70781716204571'>, 'params': <{'radius': <100>, 'brightness': <0.69999999999999996>, 'unscaled_radius': <100>}>}>, <{'type': <'color'>, 'id': <'effect_91905123905706'>, 'params': <{'color': <(1.0, 1.0, 1.0, 0.035472974181175232)>}>}>, <{'type': <'corner'>, 'id': <'effect_95502997996556'>, 'params': <{'radius': <16>}>}>]>}}
+pipelines={'pipeline_default': {'name': <'UNIVERSAL'>, 'effects': <[<{'type': <'luminosity'>, 'id': <'effect_10123004872538'>, 'params': <{'brightness_shift': <0>, 'brightness_multiplicator': <1>, 'contrast': <0.69999999999999996>, 'contrast_center': <0.45000000000000001>, 'saturation_multiplicator': <1.1000000000000001>}>}>, <{'type': <'native_static_gaussian_blur'>, 'id': <'effect_70781716204571'>, 'params': <{'radius': <100>, 'brightness': <0.69999999999999996>, 'unscaled_radius': <100>}>}>, <{'type': <'color'>, 'id': <'effect_91905123905706'>, 'params': <{'color': <(1.0, 1.0, 1.0, 0.035472974181175232)>}>}>]>}, 'pipeline_57656187583797': {'name': <'APPLICATION,UNFOCUSED - (Modify this yourself User)'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_38795972003219'>, 'params': <{'radius': <100>, 'brightness': <0.59999999999999998>, 'unscaled_radius': <100>}>}>, <{'type': <'luminosity'>, 'id': <'effect_51653740722811'>, 'params': <{'brightness_shift': <0>, 'brightness_multiplicator': <1>, 'contrast': <0.69999999999999996>, 'contrast_center': <0.5>, 'saturation_multiplicator': <1.2>}>}>, <{'type': <'corner'>, 'id': <'effect_70682751325723'>, 'params': <{'radius': <24>}>}>]>}, 'pipeline_43430336888672': {'name': <'ROUNDED-DOCK'>, 'effects': <[<{'type': <'luminosity'>, 'id': <'effect_10123004872538'>, 'params': <{'brightness_shift': <0>, 'brightness_multiplicator': <1>, 'contrast': <0.69999999999999996>, 'contrast_center': <0.45000000000000001>, 'saturation_multiplicator': <1.1000000000000001>}>}>, <{'type': <'native_static_gaussian_blur'>, 'id': <'effect_70781716204571'>, 'params': <{'radius': <100>, 'brightness': <0.69999999999999996>, 'unscaled_radius': <100>}>}>, <{'type': <'color'>, 'id': <'effect_91905123905706'>, 'params': <{'color': <(1.0, 1.0, 1.0, 0.035472974181175232)>}>}>, <{'type': <'corner'>, 'id': <'effect_95502997996556'>, 'params': <{'radius': <${corner_radius}>}>}>]>}}
 rounded-blur-found=false
 settings-version=2
 
@@ -150,6 +153,10 @@ style-components=2
 [panel]
 pipeline='pipeline_default'
 
+[popup]
+blur=false
+pipeline='pipeline_default'
+
 [screenshot]
 pipeline='pipeline_default'
 
@@ -161,13 +168,58 @@ EOF
 # ─── Handle choice ────────────────────────────────────────────────────────────
 case "$choice" in
     1)
+        echo -e "  ${BOLD}Your Dock (Dash to Dock) extends to the edge of the screen (Panel Mode)?${RESET}"
+        echo -e "  (look out if the dock touches the edges like a taskbar, rather than appearing as a floating popup-style dock)"
+        echo ""
+        echo -e "  ${CYAN}1)${RESET} Panel Mode (extends to edge)"
+        echo -e "  ${CYAN}2)${RESET} Not Panel Mode (floating/popup dock)"
+        echo ""
+        read -rp "  Enter choice [1-2]: " panel_mode_choice
+        echo ""
+
+        if [ "$panel_mode_choice" != "1" ] && [ "$panel_mode_choice" != "2" ]; then
+            echo -e "  ${RED}Invalid choice (should be either 1 or 2). Exiting.${RESET}"
+            echo ""
+            exit 1
+        fi
+
+        if [ "$panel_mode_choice" = "1" ]; then
+            corner_radius=0
+        else
+            echo -e "  ${BOLD}Which distro are you on?${RESET}"
+            echo -e "  ${CYAN}1)${RESET} Ubuntu (Yaru theme)"
+            echo -e "  ${CYAN}2)${RESET} Other (Fedora, CachyOS, Arch, etc. — Adwaita theme)"
+            echo ""
+            read -rp "  Enter choice [1-2]: " distro_choice
+            echo ""
+
+            if [ "$distro_choice" != "1" ] && [ "$distro_choice" != "2" ]; then
+                echo -e "  ${RED}Invalid choice (should be either 1 or 2). Exiting.${RESET}"
+                echo ""
+                exit 1
+            fi
+
+            if [ "$distro_choice" = "1" ]; then
+                corner_radius=16
+            else
+                corner_radius=20
+            fi
+        fi
+
         read -rp "  Do you want to backup your current blur customization? [this will backup to: ${BACKUP_DIR} to restore it later] [Y/n]: " backup_choice
         if [[ "$backup_choice" =~ ^[Yy]$ ]] || [ -z "$backup_choice" ]; then
             do_backup
         fi
 
+        echo -e "  ${CYAN}Clearing existing Blur My Shell configuration...${RESET}"
+        dconf reset -f "$DCONF_PATH"
+        sleep 0.5
+        dconf reset -f "$DCONF_PATH"
+        sleep 0.5
+        echo ""
+
         echo -e "  ${CYAN}Applying BETTER BLUR preset...${RESET}"
-        apply_better_blur
+        apply_better_blur "$corner_radius"
         echo -e "  ${GREEN}Done!${RESET}"
         echo ""
 
