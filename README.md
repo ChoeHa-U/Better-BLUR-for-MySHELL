@@ -9,12 +9,12 @@ A small interactive script that sets up a clean, consistent blur(Static) look ac
 ## What it does
 
 - Checks that you're on GNOME (works on Ubuntu, Fedora, Bazzite, and other distros with GNOME).
-- Checks if Blur My Shell is installed, or not.
+- Checks if Blur My Shell is installed.
 - Support for Yaru (Ubuntu) , ADWAITA (Other distros with GNOME).
 - Applies a tuned blur preset across the top bar, dock, overview, and folder background.
 - Optionally backs up your current blur settings before changing anything
 - Optionally fixes the radius-reset bug that happens after lock/sleep
-- Lets you restore your previous settings or reset everything back to the extension's defauls.
+- Lets you restore your previous settings or reset everything back to the extension's default.
 
 ## Requirements
 
@@ -113,7 +113,7 @@ Blur My Shell has a bug where the blur radius can silently snap back to a lower 
 ## Notes
 
 - Tested on **Ubuntu**, **Fedora (Workstation, Silverblue)**, **Bazzite**.
-- If you're on a non-GNOME desktop (KDE, XFCE, etc.), the script should not run.
+- If you're on a non-GNOME desktop (KDE, XFCE, etc.), the script will exit (won't run).
 - If your desktop environment isn't detected correctly even though you are on GNOME, the script will ask if you want to continue anyway.
-- pop-up blur is not implemented yet (do it manually).
+- pop-up blur is not enabled (Enable and configure it manually for now).
 - Dynamic blur need to be configured manually for dock if you are discomfort with the static blur on pop-up autohide dock configuration.
