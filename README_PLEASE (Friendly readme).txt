@@ -1,9 +1,9 @@
-Friendly readme here, you only need to know how to copy and paste onto terminal/console 
+#Friendly readme here, you only need to know how to copy and paste onto terminal/console 
 
-(CTRL + ALT + C to copy commands
-CTRL + ALT + V to paste commands)
+#(CTRL + ALT + C to copy commands
+#CTRL + ALT + V to paste commands)
 
-The file most likely be on downloads, just run these commands and follow along :)
+#The file most likely be on downloads, just run these commands and follow along :)
 
 
 #paste all of these:
