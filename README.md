@@ -5,7 +5,8 @@ A small interactive script that sets up a clean, consistent blur look across GNO
 ## What it does
 
 - Checks that you're on GNOME (works on Ubuntu, Fedora, Bazzite, and other GNOME-based distros)
-- Checks that Blur My Shell is installed, and guides you through installing it if it's not
+- Checks that Blur My Shell is installed, or not
+- Support for Yaru (UBUNTU) , ADWAITA (Other distros with Gnome).
 - Applies a tuned blur preset across the top bar, dock, overview, and app folders
 - Optionally backs up your current blur settings before changing anything
 - Optionally fixes the radius-reset bug that happens after lock/sleep
