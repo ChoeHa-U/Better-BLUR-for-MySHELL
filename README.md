@@ -17,6 +17,27 @@ A small interactive script that sets up a clean, consistent blur look across GNO
 - `git` and build tools (`make`) — only needed if Blur My Shell isn't installed yet
 - `dconf` (comes pre-installed on virtually all GNOME distros)
 
+## How to install
+
+Clone the project to your Downloads folder:
+
+```bash
+cd ~/Downloads
+git clone https://github.com/ChoeHa-U/Better-BLUR-for-MySHELL
+```
+
+Open a terminal and move into the project directory:
+
+```bash
+cd ~/Downloads/Better-BLUR-for-MySHELL-main
+```
+
+Run the script:
+
+```bash
+bash blurtweaker.sh
+```
+
 ## How to run it
 
 ### 1. Make it executable
@@ -75,10 +96,10 @@ None of this touches anything outside your home folder, except for installing th
 
 ## About the radius-reset fix
 
-Blur My Shell has a bug where the blur radius can silently snap back to a lower default value after your screen locks or your device sleeps, even though the slider in the extension's settings still visually shows the value you set. The fix works by running a small background watcher that detects when your screen unlocks and reapplies the correct blur values automatically, a second after you're back in. It is lightweight and only acts on unlock — it won't interfere with sleep/wake timing or consume power.
+Blur My Shell has a bug where the blur radius can silently snap back to a lower default value after your screen locks or your device sleeps — even though the slider in the extension's settings still visually shows the value you set. The fix works by running a small background watcher that detects when your screen unlocks and reapplies the correct blur values automatically, a second after you're back in. It's lightweight and only acts on unlock — it won't interfere with sleep/wake timing.
 
 ## Notes
 
-- Tested on **Ubuntu (GNOME)** and **Bazzite (GNOME, Fedora Atomic), Should also work on Cachy OS or Arch Linux running GNOME**
-- If you're on a non-GNOME desktop (KDE, XFCE, etc.), the script will not run.
-- If your desktop environment isn't detected correctly even though you are on GNOME, you can continue the script to make changes.
+- Tested on **Ubuntu (GNOME)** and **Bazzite (GNOME, Fedora Atomic)**
+- If you're on a non-GNOME desktop (KDE, XFCE, etc.), the script will tell you it isn't supported and won't run
+- If your desktop environment isn't detected correctly even though you are on GNOME, the script will ask if you want to continue anyway
