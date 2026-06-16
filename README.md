@@ -5,7 +5,7 @@ A small interactive script that sets up a clean, consistent blur look across GNO
 ## What it does
 
 - Checks that you're on GNOME (works on Ubuntu, Fedora, Bazzite, and other GNOME-based distros)
-- Installs Blur My Shell automatically if it's missing
+- Checks that Blur My Shell is installed, and guides you through installing it if it's not
 - Applies a tuned blur preset across the top bar, dock, overview, and app folders
 - Optionally backs up your current blur settings before changing anything
 - Optionally fixes the radius-reset bug that happens after lock/sleep
@@ -14,7 +14,7 @@ A small interactive script that sets up a clean, consistent blur look across GNO
 ## Requirements
 
 - GNOME desktop environment
-- `git` and build tools (`make`) — only needed if Blur My Shell isn't installed yet
+- [Blur My Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/) extension installed (the script will tell you how if it's missing)
 - `dconf` (comes pre-installed on virtually all GNOME distros)
 
 ## How to install
@@ -29,7 +29,7 @@ git clone https://github.com/ChoeHa-U/Better-BLUR-for-MySHELL
 Open a terminal and move into the project directory:
 
 ```bash
-cd ~/Downloads/Better-BLUR-for-MySHELL
+cd ~/Downloads/Better-BLUR-for-MySHELL-main
 ```
 
 Run the script:
@@ -40,19 +40,38 @@ bash blurtweaker.sh
 
 ## How to run it
 
+### 1. Make it executable
 
-### 1.Just Run it
+Linux doesn't let scripts run by default as a safety measure, so the first time you use it you need to grant permission:
+
+```bash
+chmod +x blurtweaker.sh
+```
+
+You only need to do this once.
+
+### 2. Run it
+
+```bash
+./blurtweaker.sh
+```
+
+If that doesn't work for some reason, try:
 
 ```bash
 bash blurtweaker.sh
 ```
 
-If that doesn't work for some reason, try (adds executable permission):
+## If Blur My Shell isn't installed
 
-```bash
-chmod +x blurtweaker.sh
-./blurtweaker.sh
-```
+The script will detect this and stop with instructions, since installing GNOME extensions varies a lot between distros. Here's the gist:
+
+1. Install **Extension Manager** from your distro's app store, or via Flathub:
+   ```bash
+   flatpak install flathub com.mattjakeman.ExtensionManager
+   ```
+2. Open Extension Manager, search for **Blur My Shell**, and install it
+3. Run `bash blurtweaker.sh` again
 
 ## The menu
 
@@ -84,7 +103,7 @@ Does nothing and closes.
 | Radius-fix watcher script | `~/.local/bin/blur-fix-on-unlock.sh` |
 | Radius-fix background service | `~/.config/systemd/user/blur-fix.service` |
 
-None of this touches anything outside your home folder, except for installing the extension itself (which `make install` places in `~/.local/share/gnome-shell/extensions/`, also user-local).
+None of this touches anything outside your home folder.
 
 ## About the radius-reset fix
 
