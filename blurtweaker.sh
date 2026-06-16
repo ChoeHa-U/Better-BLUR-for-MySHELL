@@ -38,40 +38,15 @@ is_bms_installed() {
     gnome-extensions list 2>/dev/null | grep -q "$EXT_UUID"
 }
 
-install_bms() {
-    echo ""
-    echo -e "${CYAN}  Cloning and installing Blur My Shell...${RESET}"
-    TMP_DIR=$(mktemp -d)
-    git clone --quiet https://github.com/aunetx/blur-my-shell "$TMP_DIR/blur-my-shell"
-    if [ $? -ne 0 ]; then
-        echo -e "${RED}  Failed to clone repository. Check your internet connection.${RESET}"
-        rm -rf "$TMP_DIR"
-        exit 1
-    fi
-
-    ( cd "$TMP_DIR/blur-my-shell" && make install )
-    if [ $? -ne 0 ]; then
-        echo -e "${RED}  Installation failed.${RESET}"
-        rm -rf "$TMP_DIR"
-        exit 1
-    fi
-
-    gnome-extensions enable "$EXT_UUID" 2>/dev/null
-
-    rm -rf "$TMP_DIR"
-    echo -e "${GREEN}  Blur My Shell installed and enabled.${RESET}"
-    echo ""
-}
-
 if ! is_bms_installed; then
-    read -rp "  Blur my shell is not installed, do you want to install it? [Y/n]: " install_choice
-    if [[ "$install_choice" =~ ^[Yy]$ ]] || [ -z "$install_choice" ]; then
-        install_bms
-    else
-        echo -e "  Exiting."
-        echo ""
-        exit 0
-    fi
+    echo -e "${YELLOW}  Blur My Shell extension is not installed.${RESET}"
+    echo ""
+    echo -e "  To install it:"
+    echo -e "    1. Install ${BOLD}Extension Manager${RESET} from your app store or Flathub (flatpak install flathub com.mattjakeman.ExtensionManager)"
+    echo -e "    2. Open Extension Manager, search for ${BOLD}Blur My Shell${RESET}, and install it"
+    echo -e "    3. Run this script again"
+    echo ""
+    exit 1
 fi
 
 # ─── Menu ─────────────────────────────────────────────────────────────────────
@@ -235,16 +210,16 @@ case "$choice" in
         echo ""
         ;;
     4)
-        echo -e "  Exiting with no changes being made."
+        echo -e "  Bye!"
         echo ""
         exit 0
         ;;
     *)
-        echo -e "  ${RED}Invalid choice (Should be either 1, 2, 3, 4). Exiting...${RESET}"
+        echo -e "  ${RED}Invalid choice. Exiting.${RESET}"
         echo ""
         exit 1
         ;;
 esac
 
-echo -e " HEY! :)  Check me on Twitter/X: ${BOLD}@choehau_ara${RESET}"
+echo -e "  ${CYAN}Follow me on Twitter/X: ${BOLD}@choehau_ara${RESET}"
 echo ""
