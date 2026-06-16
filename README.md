@@ -1,6 +1,6 @@
 # Better Blur Tuner
 
-A small interactive script that sets up a clean, consistent blur look across GNOME using the [Blur My Shell](https://github.com/aunetx/blur-my-shell) extension — and fixes a known bug where the blur radius randomly resets after your screen locks or your laptop sleeps.
+A small interactive script that sets up a clean, consistent blur look across GNOME using the [Blur My Shell](https://github.com/aunetx/blur-my-shell) extension - and fixes a known bug where the blur radius randomly resets after your screen locks or your laptop sleeps.
 
 ## What it does
 
@@ -83,7 +83,7 @@ The script will detect this and stop with instructions, since installing GNOME e
 ```
 
 **1) Apply BETTER BLUR**
-Applies the tuned preset. Before doing so, it asks if you'd like to back up your current settings (recommended if you've already customized things). After applying, it asks if you want to install the radius-reset fix (recommended — without it, blur strength can silently drop after your screen locks or the laptop wakes from sleep). You'll need to log out and back in afterward for everything to take full effect.
+Applies the tuned preset. Before doing so, it asks if you'd like to back up your current settings (recommended if you've already customized things). After applying, it asks if you want to install the radius-reset fix (recommended - without it, blur strength can silently drop after your screen locks or the laptop wakes from sleep). You'll need to log out and back in afterward for everything to take full effect.
 
 **2) Restore your previous blur settings**
 Brings back whatever was saved during your last backup. Only works if you said yes to the backup prompt at some point.
@@ -111,6 +111,7 @@ Blur My Shell has a bug where the blur radius can silently snap back to a lower 
 
 ## Notes
 
-- Tested on **Ubuntu (GNOME)** and **Bazzite (GNOME, Fedora Atomic)**
-- If you're on a non-GNOME desktop (KDE, XFCE, etc.), the script will tell you it isn't supported and won't run
-- If your desktop environment isn't detected correctly even though you are on GNOME, the script will ask if you want to continue anyway
+- Tested on **Ubuntu (GNOME)** and **Bazzite (GNOME, Fedora Atomic)**.
+- If you're on a non-GNOME desktop (KDE, XFCE, etc.), the script will tell you it isn't supported and won't run.
+- If your desktop environment isn't detected correctly even though you are on GNOME, the script will ask if you want to continue anyway.
+- pop-up blur is not implemented yet (do it manually).
