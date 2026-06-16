@@ -19,7 +19,7 @@ RESET='\033[0m'
 echo ""
 echo -e "${CYAN}${BOLD}  Better Blur Tuner${RESET}"
 echo -e "  Makes blur on top bar, dock, overview, folders - more comfortable to read and consistent."
-echo -e "  (Only for static blur, if you need dynamic on dock set it up manually for now, better if you use dash/dock auto hide)"
+echo -e "  ( Only for static blur, if you need dynamic on dock set it up manually for now, better if you use dash/dock auto hide )"
 echo ""
 
 # ─── Check GNOME ──────────────────────────────────────────────────────────────
@@ -43,7 +43,7 @@ if ! is_bms_installed; then
     echo -e "${YELLOW}  Blur My Shell extension is not installed.${RESET}"
     echo ""
     echo -e "  To install it:"
-    echo -e "    1. Install ${BOLD}Extension Manager${RESET} from your app store or Flathub (flatpak install flathub com.mattjakeman.ExtensionManager)"
+    echo -e "    1. Install ${BOLD}Extension Manager${RESET} from your app store or Flathub ( flatpak install flathub com.mattjakeman.ExtensionManager - if having trouble check repository )"
     echo -e "    2. Open Extension Manager, search for ${BOLD}Blur My Shell${RESET}, and install it"
     echo -e "    3. Run this script again"
     echo ""
@@ -168,17 +168,17 @@ EOF
 # ─── Handle choice ────────────────────────────────────────────────────────────
 case "$choice" in
     1)
-        echo -e "  ${BOLD}Your Dock (Dash to Dock) extends to the edge of the screen (Panel Mode)?${RESET}"
-        echo -e "  (look out if the dock touches the edges like a taskbar, rather than appearing as a floating popup-style dock)"
+        echo -e "  ${BOLD}Your Dock ( Dash to Dock ) extends to the edge of the screen (Panel Mode)?${RESET}"
+        echo -e "  ( look out if the dock touches the edges like a taskbar, rather than appearing as a floating popup-style dock )"
         echo ""
-        echo -e "  ${CYAN}1)${RESET} Panel Mode (extends to edge)"
-        echo -e "  ${CYAN}2)${RESET} Not Panel Mode (floating/popup dock)"
+        echo -e "  ${CYAN}1)${RESET} Panel Mode ( extends to edge )"
+        echo -e "  ${CYAN}2)${RESET} Not Panel Mode ( floating/popup dock )"
         echo ""
         read -rp "  Enter choice [1-2]: " panel_mode_choice
         echo ""
 
         if [ "$panel_mode_choice" != "1" ] && [ "$panel_mode_choice" != "2" ]; then
-            echo -e "  ${RED}Invalid choice (should be either 1 or 2). Exiting.${RESET}"
+            echo -e "  ${RED}Invalid choice ( should be either 1 or 2 ). Exiting.${RESET}"
             echo ""
             exit 1
         fi
@@ -187,14 +187,14 @@ case "$choice" in
             corner_radius=0
         else
             echo -e "  ${BOLD}Which distro are you on?${RESET}"
-            echo -e "  ${CYAN}1)${RESET} Ubuntu (Yaru theme)"
-            echo -e "  ${CYAN}2)${RESET} Other (Fedora, CachyOS, Arch, etc. — Adwaita theme)"
+            echo -e "  ${CYAN}1)${RESET} Ubuntu ( Yaru theme )"
+            echo -e "  ${CYAN}2)${RESET} Other ( Fedora, CachyOS, Arch, etc. - Adwaita theme )"
             echo ""
             read -rp "  Enter choice [1-2]: " distro_choice
             echo ""
 
             if [ "$distro_choice" != "1" ] && [ "$distro_choice" != "2" ]; then
-                echo -e "  ${RED}Invalid choice (should be either 1 or 2). Exiting.${RESET}"
+                echo -e "  ${RED}Invalid choice ( should be either 1 or 2 ). Exiting.${RESET}"
                 echo ""
                 exit 1
             fi
