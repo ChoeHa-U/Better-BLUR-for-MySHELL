@@ -6,17 +6,14 @@ CTRL + ALT + V to paste commands)
 The file most likely be on downloads, just run these commands and follow along :)
 
 
-#paste all of these
+#paste all of these:
 cd ~/Downloads
 git clone https://github.com/ChoeHa-U/Better-BLUR-for-MySHELL
-cd ~/Downloads/Better-BLUR-for-MySHELL-main
-bash blurtweaker.shREADME! PLEASE!
-
-since the file is on downloads.
-
-PASTE this on terminal to run the script and follow along: ( Use this same script to revert settings back or reset blur, YOU CAN DELETE THE SCRIPT IF YOU WANT TO ):
-
-
-
-cd Downloads 
+cd ~/Downloads/Better-BLUR-for-MySHELL
 bash blurtweaker.sh
+
+
+#something wrong?
+#try this:
+chmod +x blurtweaker.sh
+./blurtweaker.sh
