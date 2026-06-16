@@ -79,6 +79,6 @@ Blur My Shell has a bug where the blur radius can silently snap back to a lower 
 
 ## Notes
 
-- Tested on **Ubuntu (GNOME)** and **Bazzite (GNOME, Fedora Atomic), Should also work on Cachy OS or ARCH with running GNOME**
+- Tested on **Ubuntu (GNOME)** and **Bazzite (GNOME, Fedora Atomic), Should also work on Cachy OS or Arch Linux running GNOME**
 - If you're on a non-GNOME desktop (KDE, XFCE, etc.), the script will not run.
 - If your desktop environment isn't detected correctly even though you are on GNOME, you can continue the script to make changes.
