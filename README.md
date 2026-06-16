@@ -40,26 +40,18 @@ bash blurtweaker.sh
 
 ## How to run it
 
-### 1. Make it executable
 
-Linux doesn't let scripts run by default as a safety measure, so the first time you use it you need to grant permission:
-
-```bash
-chmod +x blurtweaker.sh
-```
-
-You only need to do this once.
-
-### 2. Run it
-
-```bash
-./blurtweaker.sh
-```
-
-If that doesn't work for some reason, try:
+### 1.Just Run it
 
 ```bash
 bash blurtweaker.sh
+```
+
+If that doesn't work for some reason, try (adds executable permission):
+
+```bash
+chmod +x blurtweaker.sh
+./blurtweaker.sh
 ```
 
 ## The menu
